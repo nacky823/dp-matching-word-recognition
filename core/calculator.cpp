@@ -23,7 +23,11 @@ void Calculator::run()
             SampleData u = reader_->getUnknownData();
 
             printf("Correct file is %s", c.file_name);
+            printf("Correct frame is %hhu\n", c.frame);
+            printf("Correct last data is %lf\n", c.data[0][COLUMN_SIZE-1]);
             printf("Unknown file is %s", u.file_name);
+            printf("Unknown frame is %hhu\n", u.frame);
+            printf("Unknown last data is %lf\n", u.data[0][COLUMN_SIZE-1]);
 
         }
     }
