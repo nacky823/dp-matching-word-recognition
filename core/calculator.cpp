@@ -9,5 +9,8 @@ Calculator::Calculator(FileDataReader* reader)
 
 void Calculator::run()
 {
-    for()
+    for(uint8_t file_num = 1; file_num <= NUM_OF_FILES; file_num++)
+    {
+        reader_->loadCorrectData(file_num);
+    }
 }

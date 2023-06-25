@@ -1,13 +1,10 @@
-#include "file_data_reader.hpp"
+#include "calculator.hpp"
 
 int main()
 {
-    FileDataReader reader;
+    Calculator calculator;
 
-    for(uint8_t file_num = 1; file_num <= NUM_OF_FILES; file_num++)
-    {
-        reader.loadCorrectData(file_num);
-    }
+    calculator.run();
 
     return 0;
 }
