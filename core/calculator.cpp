@@ -19,19 +19,11 @@ void Calculator::run()
         for(file_num_u = 1; file_num_u <= NUM_OF_FILES; file_num_u++)
         {
             reader_->loadUnknownData(file_num_u);
-
-            SampleData c = reader_->getCorrectData();
-            SampleData u = reader_->getUnknownData();
-
-            printf("Correct file is %s", c.file_name);
-            printf("Correct frame is %hhu\n", c.frame);
-            printf("Correct last data is %lf\n", c.data[c.frame-1][COLUMN_SIZE-1]);
-            printf("Unknown file is %s", u.file_name);
-            printf("Unknown frame is %hhu\n", u.frame);
-            printf("Unknown last data is %lf\n", u.data[u.frame-1][COLUMN_SIZE-1]);
-
             localDistance();
 
+#ifdef DEBUG_MODE
+            print();
+#endif // DEBUG_MODE
         }
     }
 }
@@ -56,5 +48,20 @@ void Calculator::localDistance()
             local_distance_[frame_c][frame_u] = sqrtl(local_distance_[frame_c][frame_u]);
         }
     }
-    printf("Local distance is %lf\n", local_distance_[frame_c][frame_u]);
 }
+
+#ifdef DEBUG_MODE
+void Calculator::print()
+{
+    SampleData c = reader_->getCorrectData();
+    SampleData u = reader_->getUnknownData();
+
+    printf("Correct file is %s", c.file_name);
+    printf("Correct frame is %hhu\n", c.frame);
+    printf("Correct last data is %lf\n", c.data[c.frame-1][COLUMN_SIZE-1]);
+    printf("Unknown file is %s", u.file_name);
+    printf("Unknown frame is %hhu\n", u.frame);
+    printf("Unknown last data is %lf\n", u.data[u.frame-1][COLUMN_SIZE-1]);
+    printf("Last local distance is %lf\n", local_distance_[c.frame-1][u.frame-1]);
+}
+#endif // DEBUG_MODE

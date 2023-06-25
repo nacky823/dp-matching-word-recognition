@@ -14,10 +14,13 @@ private:
 
     void localDistance();
 
+#ifdef DEBUG_MODE
+    void print();
+#endif // DEBUG_MODE
+
 public:
     Calculator(FileDataReader*);
     void run();
-
 };
 
 #endif // CALCULATOR_HPP_
