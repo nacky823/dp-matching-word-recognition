@@ -4,7 +4,7 @@ int main()
 {
     FileDataReader reader;
 
-    for (uint8_t file_num = 1; file_num <= NUM_OF_FILES; file_num++)
+    for(uint8_t file_num = 1; file_num <= NUM_OF_FILES; file_num++)
     {
         reader.loadCorrectData(file_num);
     }

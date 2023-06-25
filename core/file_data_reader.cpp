@@ -21,7 +21,7 @@ void FileDataReader::loadDataFromFile(uint8_t correct_or_unknown, uint8_t file_n
 
     sprintf(file_path, path_format, correct_or_unknown, correct_or_unknown, file_num);
     fp = fopen(file_path, "r");
-    if (fp == NULL)
+    if(fp == NULL)
     {
         showOpenError(correct_or_unknown, file_num);
         exit(EXIT_FAILURE);
@@ -29,9 +29,9 @@ void FileDataReader::loadDataFromFile(uint8_t correct_or_unknown, uint8_t file_n
     fgets(sample->file_name, sizeof(sample->file_name), fp);
     fgets(sample->word, sizeof(sample->word), fp);
     fscanf(fp, "%hhu", &sample->frame);
-    for (i = 0; i < sample->frame; i++)
+    for(i = 0; i < sample->frame; i++)
     {
-        for (j = 0; j < COLUMN_SIZE; j++)
+        for(j = 0; j < COLUMN_SIZE; j++)
         {
             fscanf(fp, "%lf", &sample->data[i][j]);
         }
@@ -53,9 +53,9 @@ void FileDataReader::print(SampleData *sample)
 #ifdef SAMPLE_DATA_VISUALIZATION
     uint8_t i, j;
 
-    for (i = 0; i < sample->frame; i++)
+    for(i = 0; i < sample->frame; i++)
     {
-        for (j = 0; j < COLUMN_SIZE; j++)
+        for(j = 0; j < COLUMN_SIZE; j++)
         {
             printf("%lf ", sample->data[i][j]);
         }

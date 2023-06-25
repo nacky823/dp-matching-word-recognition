@@ -12,6 +12,7 @@ private:
 
 public:
     Calculator(FileDataReader*);
+    void run();
 
 };
 

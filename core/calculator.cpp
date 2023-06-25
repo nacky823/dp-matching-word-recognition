@@ -7,3 +7,7 @@ Calculator::Calculator(FileDataReader* reader)
     reader_ = reader;
 }
 
+void Calculator::run()
+{
+    for()
+}
