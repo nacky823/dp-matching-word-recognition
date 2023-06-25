@@ -18,19 +18,27 @@ void Calculator::run()
         for(file_num_u = 1; file_num_u <= NUM_OF_FILES; file_num_u++)
         {
             reader_->loadUnknownData(file_num_u);
+
+            SampleData c = reader_->getCorrectData();
+            SampleData u = reader_->getUnknownData();
         }
     }
 }
 
 void Calculator::localDistance(uint8_t correct, uint8_t unknown)
 {
-    uint8_t frame_c = reader_->getCorrectData();
-    uint8_t frame_u = reader_->getUnknownData();
+    SampleData c = reader_->getCorrectData();
+    SampleData u = reader_->getUnknownData();
+    uint8_t frame_c = c.frame;
+    uint8_t frame_u = u.frame;
+    double data_c[ROW_SIZE][COLUMN_SIZE];
+    double data_u[ROW_SIZE][COLUMN_SIZE];
 
     for(correct = 0; correct < frame_c; correct++)
     {
         for(unknown = 0; unknown < frame_u; unknown++)
         {
+            local_distance_[correct][unknown] = 0;
 
         }
     }
