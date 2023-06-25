@@ -30,7 +30,7 @@ void Calculator::run()
             printf("Unknown frame is %hhu\n", u.frame);
             printf("Unknown last data is %lf\n", u.data[u.frame-1][COLUMN_SIZE-1]);
 
-            //localDistance()
+            localDistance();
 
         }
     }
@@ -53,7 +53,8 @@ void Calculator::localDistance()
                 answer = pow((c.data[frame_c][column] - u.data[frame_u][column]), 2.0);
                 local_distance_[frame_c][frame_u] += answer;
             }
-            printf("Local distance is %lf\n", local_distance_[frame_c][frame_u]);
+            local_distance_[frame_c][frame_u] = sqrtl(local_distance_[frame_c][frame_u]);
         }
     }
+    printf("Local distance is %lf\n", local_distance_[frame_c][frame_u]);
 }
