@@ -10,7 +10,7 @@
 // #define SAMPLE_DATA_VISUALIZATION
 #define FILE_NAME_SIZE 20
 #define WORD_SIZE 50
-#define ROW_SIZE 300
+#define ROW_SIZE 255
 #define COLUMN_SIZE 15
 #define FILE_NAME_FORMAT "city%03d_%03d.txt"
 #define PATH_FORMAT "../city_mcepdata/city%03d/" FILE_NAME_FORMAT

@@ -3,6 +3,8 @@
 #include "calculator.hpp"
 #include <math.h>
 
+#define WEIGHT 2
+
 Calculator::Calculator(FileDataReader* reader)
 {
     reader_ = reader;
@@ -23,9 +25,10 @@ void Calculator::run()
             data_c = reader_->getCorrectData();
             data_u = reader_->getUnknownData();
             calculateLocalDistance(data_c, data_u);
+            calculateDPMatching(data_c, data_u, file_num_u-1);
 
 #ifdef DEBUG_MODE
-            print(data_c, data_u);
+            print(data_c, data_u, file_num_u-1);
 #endif // DEBUG_MODE
         }
     }
@@ -49,17 +52,42 @@ void Calculator::calculateLocalDistance(SampleData c, SampleData u)
     }
 }
 
-void Calculator::temp(SampleData c, SampleData u)
+void Calculator::calculateDPMatching(SampleData c, SampleData u, uint8_t file_num)
 {
     uint8_t frame_c, frame_u;
+    double vertical, diagonal, horizontal, min;
 
-    /* initial conditions */
+    /* Initial conditions */
     cumulative_distance_[0][0] = local_distance_[0][0];
-    /* boundary conditions */
+    /* Boundary conditions */
+    for(frame_c = 1; frame_c < c.frame; frame_c++)
+    {
+        cumulative_distance_[frame_c][0] = cumulative_distance_[frame_c-1][0] + local_distance_[frame_c][0];
+    }
+    for(frame_u = 1; frame_u < u.frame; frame_u++)
+    {
+        cumulative_distance_[0][frame_u] = cumulative_distance_[0][frame_u-1] + local_distance_[0][frame_u];
+    }
+    /* Other conditions */
+    for(frame_c = 1; frame_c < c.frame; frame_c++)
+    {
+        for(frame_u = 1; frame_u < u.frame; frame_u++)
+        {
+            vertical = cumulative_distance_[frame_c][frame_u-1] + local_distance_[frame_c][frame_u];
+            diagonal = cumulative_distance_[frame_c-1][frame_u-1] + (local_distance_[frame_c][frame_u] * WEIGHT);
+            horizontal = cumulative_distance_[frame_c-1][frame_u] + local_distance_[frame_c][frame_u];
+            min = vertical;
+            if(diagonal < min) min = diagonal;
+            if(horizontal < min) min = horizontal;
+            cumulative_distance_[frame_c][frame_u] = min;
+        }
+    }
+    /* Calculate word distance */
+    word_distance_[file_num] = cumulative_distance_[c.frame-1][u.frame-1] / (c.frame + u.frame);
 }
 
 #ifdef DEBUG_MODE
-void Calculator::print(SampleData c, SampleData u)
+void Calculator::print(SampleData c, SampleData u, uint8_t file_num)
 {
     printf("Correct file is %s", c.file_name);
     printf("Correct frame is %hhu\n", c.frame);
@@ -68,5 +96,7 @@ void Calculator::print(SampleData c, SampleData u)
     printf("Unknown frame is %hhu\n", u.frame);
     printf("Unknown last data is %lf\n", u.data[u.frame-1][COLUMN_SIZE-1]);
     printf("Last local distance is %lf\n", local_distance_[c.frame-1][u.frame-1]);
+    printf("Last cumulative distance is %lf\n", cumulative_distance_[c.frame-1][u.frame-1]);
+    printf("Word distance is %lf\n", word_distance_[file_num]);
 }
 #endif // DEBUG_MODE

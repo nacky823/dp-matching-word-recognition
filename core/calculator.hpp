@@ -10,14 +10,15 @@ class Calculator
 private:
     double local_distance_[ROW_SIZE][ROW_SIZE];
     double cumulative_distance_[ROW_SIZE][ROW_SIZE];
+    double word_distance_[NUM_OF_FILES];
 
     FileDataReader *reader_;
 
     void calculateLocalDistance(SampleData, SampleData);
-    void temp(SampleData, SampleData);
+    void calculateDPMatching(SampleData, SampleData, uint8_t);
 
 #ifdef DEBUG_MODE
-    void print(SampleData, SampleData);
+    void print(SampleData, SampleData, uint8_t);
 #endif // DEBUG_MODE
 
 public:
