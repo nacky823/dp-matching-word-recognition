@@ -11,6 +11,7 @@ Calculator::Calculator(FileDataReader* reader)
 void Calculator::run()
 {
     uint8_t file_num_c, file_num_u;
+    SampleData data_c, data_u;
 
     for(file_num_c = 1; file_num_c <= NUM_OF_FILES; file_num_c++)
     {
@@ -19,21 +20,20 @@ void Calculator::run()
         for(file_num_u = 1; file_num_u <= NUM_OF_FILES; file_num_u++)
         {
             reader_->loadUnknownData(file_num_u);
-            calculateLocalDistance();
+            data_c = reader_->getCorrectData();
+            data_u = reader_->getUnknownData();
+            calculateLocalDistance(data_c, data_u);
 
 #ifdef DEBUG_MODE
-            print();
+            print(data_c, data_u);
 #endif // DEBUG_MODE
         }
     }
 }
 
-void Calculator::calculateLocalDistance()
+void Calculator::calculateLocalDistance(SampleData c, SampleData u)
 {
     uint8_t frame_c, frame_u, column;
-    double answer;
-    SampleData c = reader_->getCorrectData();
-    SampleData u = reader_->getUnknownData();
 
     for(frame_c = 0; frame_c < c.frame; frame_c++)
     {
@@ -42,20 +42,25 @@ void Calculator::calculateLocalDistance()
             local_distance_[frame_c][frame_u] = 0;
             for(column = 0; column < COLUMN_SIZE; column++)
             {
-                answer = pow((c.data[frame_c][column] - u.data[frame_u][column]), 2.0);
-                local_distance_[frame_c][frame_u] += answer;
+                local_distance_[frame_c][frame_u] += pow((c.data[frame_c][column] - u.data[frame_u][column]), 2.0);
             }
             local_distance_[frame_c][frame_u] = sqrtl(local_distance_[frame_c][frame_u]);
         }
     }
 }
 
-#ifdef DEBUG_MODE
-void Calculator::print()
+void Calculator::temp(SampleData c, SampleData u)
 {
-    SampleData c = reader_->getCorrectData();
-    SampleData u = reader_->getUnknownData();
+    uint8_t frame_c, frame_u;
 
+    /* initial conditions */
+    cumulative_distance_[0][0] = local_distance_[0][0];
+    /* boundary conditions */
+}
+
+#ifdef DEBUG_MODE
+void Calculator::print(SampleData c, SampleData u)
+{
     printf("Correct file is %s", c.file_name);
     printf("Correct frame is %hhu\n", c.frame);
     printf("Correct last data is %lf\n", c.data[c.frame-1][COLUMN_SIZE-1]);

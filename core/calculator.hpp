@@ -9,13 +9,15 @@ class Calculator
 {
 private:
     double local_distance_[ROW_SIZE][ROW_SIZE];
+    double cumulative_distance_[ROW_SIZE][ROW_SIZE];
 
     FileDataReader *reader_;
 
-    void calculateLocalDistance();
+    void calculateLocalDistance(SampleData, SampleData);
+    void temp(SampleData, SampleData);
 
 #ifdef DEBUG_MODE
-    void print();
+    void print(SampleData, SampleData);
 #endif // DEBUG_MODE
 
 public:
