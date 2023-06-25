@@ -2,7 +2,8 @@
 
 int main()
 {
-    Calculator calculator;
+    FileDataReader reader;
+    Calculator calculator(&reader);
 
     calculator.run();
 
