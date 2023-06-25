@@ -9,15 +9,29 @@ Calculator::Calculator(FileDataReader* reader)
 
 void Calculator::run()
 {
-    uint8_t file_num_a, file_num_b;
+    uint8_t file_num_c, file_num_u;
 
-    for(file_num_a = 1; file_num_a <= NUM_OF_FILES; file_num_a++)
+    for(file_num_c = 1; file_num_c <= NUM_OF_FILES; file_num_c++)
     {
-        reader_->loadCorrectData(file_num_a);
+        reader_->loadCorrectData(file_num_c);
 
-        for(file_num_b = 1; file_num_b <= NUM_OF_FILES; file_num_b++)
+        for(file_num_u = 1; file_num_u <= NUM_OF_FILES; file_num_u++)
         {
-            reader_->loadUnknownData(file_num_b);
+            reader_->loadUnknownData(file_num_u);
+        }
+    }
+}
+
+void Calculator::localDistance(uint8_t correct, uint8_t unknown)
+{
+    uint8_t frame_c = reader_->getCorrectData();
+    uint8_t frame_u = reader_->getUnknownData();
+
+    for(correct = 0; correct < frame_c; correct++)
+    {
+        for(unknown = 0; unknown < frame_u; unknown++)
+        {
+
         }
     }
 }
