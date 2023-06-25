@@ -3,7 +3,7 @@ do: main.o file_data_reader.o
 
 main.o: main.cpp
 	g++ -Wall -c main.cpp
-lib.o: file_data_reader.cpp
+file_data_reader.o: file_data_reader.cpp
 	g++ -Wall -c file_data_reader.cpp
 
 clean:
