@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2023 Yuki NAGAKI youjiyongmu4@gmail.com
 // SPDX-License-Identifier: GPL-2.0
 #include "calculator.hpp"
+#include <math.h>
 
 Calculator::Calculator(FileDataReader* reader)
 {
@@ -29,21 +30,30 @@ void Calculator::run()
             printf("Unknown frame is %hhu\n", u.frame);
             printf("Unknown last data is %lf\n", u.data[u.frame-1][COLUMN_SIZE-1]);
 
+            //localDistance()
+
         }
     }
 }
 
-void Calculator::localDistance(uint8_t correct, uint8_t unknown)
+void Calculator::localDistance()
 {
+    uint8_t frame_c, frame_u, column;
+    double answer;
     SampleData c = reader_->getCorrectData();
     SampleData u = reader_->getUnknownData();
 
-    for(correct = 0; correct < frame_c; correct++)
+    for(frame_c = 0; frame_c < c.frame; frame_c++)
     {
-        for(unknown = 0; unknown < frame_u; unknown++)
+        for(frame_u = 0; frame_u < u.frame; frame_u++)
         {
-            local_distance_[correct][unknown] = 0;
-
+            local_distance_[frame_c][frame_u] = 0;
+            for(column = 0; column < COLUMN_SIZE; column++)
+            {
+                answer = pow((c.data[frame_c][column] - u.data[frame_u][column]), 2.0);
+                local_distance_[frame_c][frame_u] += answer;
+            }
+            printf("Local distance is %lf\n", local_distance_[frame_c][frame_u]);
         }
     }
 }

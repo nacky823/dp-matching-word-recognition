@@ -12,7 +12,7 @@ private:
 
     FileDataReader *reader_;
 
-    void localDistance(uint8_t, uint8_t);
+    void localDistance();
 
 public:
     Calculator(FileDataReader*);
