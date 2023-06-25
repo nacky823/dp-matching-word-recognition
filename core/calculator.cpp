@@ -37,10 +37,6 @@ void Calculator::localDistance(uint8_t correct, uint8_t unknown)
 {
     SampleData c = reader_->getCorrectData();
     SampleData u = reader_->getUnknownData();
-    uint8_t frame_c = c.frame;
-    uint8_t frame_u = u.frame;
-    double data_c[ROW_SIZE][COLUMN_SIZE];
-    double data_u[ROW_SIZE][COLUMN_SIZE];
 
     for(correct = 0; correct < frame_c; correct++)
     {
