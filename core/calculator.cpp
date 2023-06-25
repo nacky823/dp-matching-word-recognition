@@ -19,7 +19,7 @@ void Calculator::run()
         for(file_num_u = 1; file_num_u <= NUM_OF_FILES; file_num_u++)
         {
             reader_->loadUnknownData(file_num_u);
-            localDistance();
+            calculateLocalDistance();
 
 #ifdef DEBUG_MODE
             print();
@@ -28,7 +28,7 @@ void Calculator::run()
     }
 }
 
-void Calculator::localDistance()
+void Calculator::calculateLocalDistance()
 {
     uint8_t frame_c, frame_u, column;
     double answer;

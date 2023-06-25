@@ -12,7 +12,7 @@ private:
 
     FileDataReader *reader_;
 
-    void localDistance();
+    void calculateLocalDistance();
 
 #ifdef DEBUG_MODE
     void print();
