@@ -8,9 +8,10 @@
 class Calculator
 {
 private:
+    FileDataReader *reader_;
 
 public:
-Calculator();
+    Calculator(FileDataReader*);
 
 };
 
