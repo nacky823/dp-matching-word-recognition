@@ -1,7 +1,6 @@
 // SPDX-FileCopyrightText: 2023 Yuki NAGAKI youjiyongmu4@gmail.com
 // SPDX-License-Identifier: GPL-2.0
 #include "file_data_reader.hpp"
-#include <stdio.h>
 #include <stdlib.h>
 
 void FileDataReader::showOpenError(uint8_t correct_or_unknown, uint8_t file_num)

@@ -4,6 +4,7 @@
 #define COMMON_HPP_
 
 #include <stdint.h>
+#include <stdio.h>
 
 #define DEBUG_MODE
 // #define SAMPLE_DATA_VISUALIZATION
