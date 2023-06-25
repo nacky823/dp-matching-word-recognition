@@ -21,6 +21,10 @@ void Calculator::run()
 
             SampleData c = reader_->getCorrectData();
             SampleData u = reader_->getUnknownData();
+
+            printf("Correct file is %s", c.file_name);
+            printf("Unknown file is %s", u.file_name);
+
         }
     }
 }
