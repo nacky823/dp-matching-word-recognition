@@ -5,9 +5,23 @@
 
 #define WEIGHT 2
 
-Calculator::Calculator(FileDataReader* reader)
+Calculator::Calculator(FileDataReader* reader) : word_distance_(), correct_count_(0)
 {
     reader_ = reader;
+    initializeArray();
+}
+
+void Calculator::initializeArray()
+{
+    uint8_t i, j;
+    for(i = 0; i < ROW_SIZE; i++)
+    {
+        for(j = 0; j < ROW_SIZE; j++)
+        {
+            local_distance_[i][j] = 0;
+            cumulative_distance_[i][j] = 0;
+        }
+    }
 }
 
 void Calculator::run()
@@ -31,7 +45,9 @@ void Calculator::run()
             print(data_c, data_u, file_num_u-1);
 #endif // DEBUG_MODE
         }
+        evaluateMatching(file_num_c);
     }
+    printf("\nThe accuracy rate is %hhu%%.\n", correct_count_);
 }
 
 void Calculator::calculateLocalDistance(SampleData c, SampleData u)
@@ -84,6 +100,37 @@ void Calculator::calculateDPMatching(SampleData c, SampleData u, uint8_t file_nu
     }
     /* Calculate word distance */
     word_distance_[file_num] = cumulative_distance_[c.frame-1][u.frame-1] / (c.frame + u.frame);
+}
+
+void Calculator::evaluateMatching(uint8_t correct_file_num)
+{
+    double min = word_distance_[0];
+    uint8_t matching_file_num = 1;
+    uint8_t file_num;
+
+    for(file_num = 0; file_num < NUM_OF_FILES; file_num++)
+    {
+        if(word_distance_[file_num] < min)
+        {
+            min = word_distance_[file_num];
+            matching_file_num = file_num + 1;
+        }
+    }
+    if(matching_file_num != correct_file_num)
+    {
+        printf("\n!!! Did not match with the correct answer. !!!\n");
+        printf("Correct file : city%03d_%03d.txt\n", CORRECT, correct_file_num);
+        printf("Unknown file : city%03d_%03d.txt\n", UNKNOWN, matching_file_num);
+        printf("Word distance is %f\n\n", min);
+    }
+    else
+    {
+        printf("\nMatched with the correct answer.\n");
+        printf("Correct file : city%03d_%03d.txt\n", CORRECT, correct_file_num);
+        printf("Unknown file : city%03d_%03d.txt\n", UNKNOWN, matching_file_num);
+        printf("Word distance is %f\n\n", min);
+        correct_count_++;
+    }
 }
 
 #ifdef DEBUG_MODE

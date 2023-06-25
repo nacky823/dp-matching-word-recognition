@@ -11,11 +11,14 @@ private:
     double local_distance_[ROW_SIZE][ROW_SIZE];
     double cumulative_distance_[ROW_SIZE][ROW_SIZE];
     double word_distance_[NUM_OF_FILES];
+    uint8_t correct_count_;
 
     FileDataReader *reader_;
 
+    void initializeArray();
     void calculateLocalDistance(SampleData, SampleData);
     void calculateDPMatching(SampleData, SampleData, uint8_t);
+    void evaluateMatching(uint8_t);
 
 #ifdef DEBUG_MODE
     void print(SampleData, SampleData, uint8_t);
