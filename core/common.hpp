@@ -8,6 +8,7 @@
 
 // #define DEBUG_MODE
 // #define SAMPLE_DATA_VISUALIZATION
+#define MATCH_SUCCESS_INFO
 #define FILE_NAME_SIZE 20
 #define WORD_SIZE 20
 #define ROW_SIZE 255
