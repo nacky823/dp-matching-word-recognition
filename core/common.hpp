@@ -17,6 +17,7 @@
 #define CORRECT 11 // file number of the correct data
 #define UNKNOWN 21 // file number of the unknown data
 #define NUM_OF_FILES 100
+#define WEIGHT 2
 
 struct SampleData
 {

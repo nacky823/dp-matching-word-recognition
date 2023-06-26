@@ -3,25 +3,9 @@
 #include "calculator.hpp"
 #include <math.h>
 
-#define WEIGHT 2
-
 Calculator::Calculator(FileDataReader* reader) : word_distance_(), correct_count_(0)
 {
     reader_ = reader;
-    initializeArray();
-}
-
-void Calculator::initializeArray()
-{
-    uint8_t i, j;
-    for(i = 0; i < ROW_SIZE; i++)
-    {
-        for(j = 0; j < ROW_SIZE; j++)
-        {
-            local_distance_[i][j] = 0;
-            cumulative_distance_[i][j] = 0;
-        }
-    }
 }
 
 void Calculator::run()

@@ -15,7 +15,6 @@ private:
 
     FileDataReader *reader_;
 
-    void initializeArray();
     void calculateLocalDistance(SampleData, SampleData);
     void calculateDPMatching(SampleData, SampleData, uint8_t);
     void evaluateMatching(uint8_t);
