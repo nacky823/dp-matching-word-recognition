@@ -23,7 +23,7 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 + テキストファイル形式で **2 種類のファイルセット** を入力
 
     + DP マッチングを行う際の、**正解データ** のファイルセットと、**未知データ** のファイルセットの２種類
-    + [`city_mcepdata`]() ディレクトリには **４種類のサンプルファイルセット** がある
+    + [`city_mcepdata`](https://github.com/nacky823/dp-matching-word-recognition/tree/master/city_mcepdata) ディレクトリには **４種類のサンプルファイルセット** がある
 
 + 入力するテキストファイルの規則
 
@@ -75,21 +75,21 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 
 ## 使用方法
 
-1. （任意）[`common.hpp`]() の `17`, `18` 行目を編集
+1. （任意）[`common.hpp`](https://github.com/nacky823/dp-matching-word-recognition/blob/21ca44049b26923f9da6329d8207242a2023943c/core/common.hpp#L18C1-L19C54) の `18`, `19` 行目を編集
     + マッチングに使用する、正解と認識対象のファイルセットをそれぞれ指定
         ```c++
         #define CORRECT 11 // file number of the correct data
         #define UNKNOWN 12 // file number of the unknown data
         ```
         > **Note**
-        > + 初期設定では正解ファイルセットが、`11` つまり [`city011`]() になっている。
-        > + 初期設定では認識対象ファイルセットが、`12` つまり [`city012`]() になっている。
+        > + 初期設定では正解ファイルセットが、`11` つまり [`city011`](https://github.com/nacky823/dp-matching-word-recognition/tree/master/city_mcepdata/city011) になっている。
+        > + 初期設定では認識対象ファイルセットが、`12` つまり [`city012`](https://github.com/nacky823/dp-matching-word-recognition/tree/master/city_mcepdata/city012) になっている。
         > + 正解または認識対象ファイルセットを任意のものに指定
         >   + `11`, `12`, `21`, `22` の中から選択して書き換える
 
 1. コンパイル
     1. このパッケージのディレクトリに移動
-    1. [`dp-matching-word-recognition/core/`]() ディレクトリに移動してコンパイル
+    1. [`dp-matching-word-recognition/core/`](https://github.com/nacky823/dp-matching-word-recognition/tree/master/core) ディレクトリに移動してコンパイル
         ```
         cd core/ && make
         ```
@@ -117,6 +117,6 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 ## License
 
 This project is licensed under the GNU General Public License (GPL) version 2.0. 
-Please see the [`COPYING`]() file for more information.
+Please see the [`COPYING`](https://github.com/nacky823/dp-matching-word-recognition/blob/master/COPYING) file for more information.
 
 © 2023 Yuki NAGAKI
