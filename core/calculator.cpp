@@ -31,7 +31,7 @@ void Calculator::run()
         }
         evaluateMatching(file_num_c);
     }
-    printf("\nThe accuracy rate is %hhu%%.\n", correct_count_);
+    printf("\nThe accuracy rate is %hhu [%].\n", correct_count_);
 }
 
 void Calculator::calculateLocalDistance(SampleData c, SampleData u)

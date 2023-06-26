@@ -100,7 +100,19 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
     ```
     + 下記のように **単語認識率 [%]** が出力される
         ```
+        
+        !!! Did not match with the correct answer. !!!
+        Correct file : city011_020.txt
+        Unknown file : city012_062.txt
+        Word distance is 0.603361
+        
+        
+        The accuracy rate is 99%.
         ```
+        + 不一致の単語がある場合、詳細情報を出力する
+            + `Correct file : city011_020.txt` は正解のファイル
+            + `Unknown file : city012_062.txt` は認識対象のファイル
+            + `Word distance is 0.603361` は DP マッチングにおける単語間距離
 
 ## License
 
