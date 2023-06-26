@@ -42,11 +42,9 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 
         + ファイル名には、`1` から `100` までの **単語に対応した番号** を重複せず記述する
         + ファイル名には、正解データと未知データを区別する為の **番号** を割り振る
-
-        > **Note**  
-        > Ex. `city021_100.txt`
-        > + `021` が正解データと未知データを区別する為の番号
-        > + `100` が単語に対応した番号
+        + ex. `city021_100.txt`
+            + `021` が正解データと未知データを区別する為の番号
+            + `100` が単語に対応した番号
 
     + ２行目：発音した **単語**
 
@@ -73,7 +71,7 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 
 ### 出力
 + 未知データの **「ある単語」** と正解データの **100 単語** のマッチング結果を出力
-    + 正解率（単語認識率）[%] を標準出力に出力
+    + 単語認識率（正解率）[%] を標準出力に出力
 
 ## 使用方法
 
@@ -87,13 +85,26 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
         > + 初期設定では正解ファイルセットが、`11` つまり [`city011`]() になっている。
         > + 初期設定では認識対象ファイルセットが、`12` つまり [`city012`]() になっている。
         > + 正解または認識対象ファイルセットを任意のものに指定
-        >   + `11`, `12`, `21`, `22` の中から選択
+        >   + `11`, `12`, `21`, `22` の中から選択して書き換える
 
+1. コンパイル
+    1. このパッケージのディレクトリに移動
+    1. [`dp-matching-word-recognition/core/`]() ディレクトリに移動してコンパイル
+        ```
+        cd core/ && make
+        ```
 
+1. 実行
+    ```
+    ./do
+    ```
+    + 下記のように **単語認識率 [%]** が出力される
+        ```
+        ```
 
+## License
 
+This project is licensed under the GNU General Public License (GPL) version 2.0. 
+Please see the [`COPYING`]() file for more information.
 
-
-
-
-
+© 2023 Yuki NAGAKI
