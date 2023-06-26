@@ -43,7 +43,8 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
         + ファイル名には、`1` から `100` までの **単語に対応した番号** を重複せず記述する
         + ファイル名には、正解データと未知データを区別する為の **番号** を割り振る
 
-        > **Example** `city021_100.txt`
+        > **Note**  
+        > Ex. `city021_100.txt`
         > + `021` が正解データと未知データを区別する為の番号
         > + `100` が単語に対応した番号
 
