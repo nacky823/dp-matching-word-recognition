@@ -107,9 +107,12 @@ void Calculator::evaluateMatching(uint8_t correct_file_num)
     }
     else
     {
+        correct_count_++;
+
+#ifdef DEBUG_MODE
         printf("\nMatched with the correct answer.\n");
         printResult(correct_file_num, matching_file_num, min);
-        correct_count_++;
+#endif // DEBUG_MODE
     }
 }
 

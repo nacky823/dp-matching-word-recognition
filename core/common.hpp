@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#define DEBUG_MODE
+// #define DEBUG_MODE
 // #define SAMPLE_DATA_VISUALIZATION
 #define FILE_NAME_SIZE 20
 #define WORD_SIZE 20
