@@ -115,8 +115,8 @@ void Calculator::evaluateMatching(uint8_t correct_file_num)
 
 void Calculator::printResult(uint8_t correct_file_num, uint8_t matching_file_num, double min)
 {
-    printf("Correct file : ", FILE_NAME_FORMAT, CORRECT, correct_file_num);
-    printf("Unknown file : ", FILE_NAME_FORMAT, UNKNOWN, matching_file_num);
+    printf("Correct file : " FILE_NAME_FORMAT "\n", CORRECT, correct_file_num);
+    printf("Unknown file : " FILE_NAME_FORMAT "\n", UNKNOWN, matching_file_num);
     printf("Word distance is %f\n\n", min);
 }
 
