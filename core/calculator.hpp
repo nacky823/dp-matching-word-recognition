@@ -18,6 +18,7 @@ private:
     void calculateLocalDistance(SampleData, SampleData);
     void calculateDPMatching(SampleData, SampleData, uint8_t);
     void evaluateMatching(uint8_t);
+    void printResult(uint8_t, uint8_t, double);
 
 #ifdef DEBUG_MODE
     void print(SampleData, SampleData, uint8_t);

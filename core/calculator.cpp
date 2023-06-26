@@ -103,18 +103,21 @@ void Calculator::evaluateMatching(uint8_t correct_file_num)
     if(matching_file_num != correct_file_num)
     {
         printf("\n!!! Did not match with the correct answer. !!!\n");
-        printf("Correct file : city%03d_%03d.txt\n", CORRECT, correct_file_num);
-        printf("Unknown file : city%03d_%03d.txt\n", UNKNOWN, matching_file_num);
-        printf("Word distance is %f\n\n", min);
+        printResult(correct_file_num, matching_file_num, min);
     }
     else
     {
         printf("\nMatched with the correct answer.\n");
-        printf("Correct file : city%03d_%03d.txt\n", CORRECT, correct_file_num);
-        printf("Unknown file : city%03d_%03d.txt\n", UNKNOWN, matching_file_num);
-        printf("Word distance is %f\n\n", min);
+        printResult(correct_file_num, matching_file_num, min);
         correct_count_++;
     }
+}
+
+void Calculator::printResult(uint8_t correct_file_num, uint8_t matching_file_num, double min)
+{
+    printf("Correct file : ", FILE_NAME_FORMAT, CORRECT, correct_file_num);
+    printf("Unknown file : ", FILE_NAME_FORMAT, UNKNOWN, matching_file_num);
+    printf("Word distance is %f\n\n", min);
 }
 
 #ifdef DEBUG_MODE
