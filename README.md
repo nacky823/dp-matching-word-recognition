@@ -122,7 +122,6 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
     + 重みの値を、任意の `double` 型の浮動小数点数に変更する
         ```c++
         #define WEIGHT 2
-        #define WEIGHT 2
         ```
         > **Note**
         > + 初期設定では重みの値が `2` になっている。
