@@ -120,13 +120,13 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 
 1. [`common.hpp`](https://github.com/nacky823/dp-matching-word-recognition/blob/cb6c0397860a4f31eb237090836015804eec90a5/core/common.hpp#L21C1-L21C17) を編集
     + 重みの値を、任意の `double` 型の浮動小数点数に変更する
-        ```c++
+        ```c
         #define WEIGHT 2
         ```
         > **Note**
         > + 初期設定では重みの値が `2` になっている。
         > + ex. $\sqrt{2}$ に変更する場合、以下の様に記述する。
-        >   ```c++
+        >   ```c
         >   #define WEIGHT 1.414213562373
         >   ```
 
