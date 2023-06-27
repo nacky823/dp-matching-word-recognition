@@ -114,7 +114,7 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
             + `Unknown file : city012_062.txt` は認識対象のファイル
             + `Word distance is 0.603361` は DP マッチングにおける単語間距離
 
-+ **斜め遷移の重み変更方法**
+### 斜め遷移の重み変更方法
 
 累積距離を計算するための再帰方程式において、斜め遷移の重みを変更する手順は以下の通りです。
 
@@ -126,9 +126,9 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
         > **Note**
         > + 初期設定では重みの値が `2` になっている。
         > + ex. $\sqrt{2}$ に変更する場合、以下の様に記述する。
-        >   ```c++
-        >   #define WEIGHT 1.414213562373 // Weight for diagonal transitions
-        >   ```
+        >     ```c++
+        >     #define WEIGHT 1.414213562373 // Weight for diagonal transitions
+        >     ```
 
 1. コンパイル & 実行
     + `core/` ディレクトリで以下のコマンドを実行
