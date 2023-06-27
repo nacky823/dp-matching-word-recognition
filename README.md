@@ -116,9 +116,12 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 
 ### 斜め遷移の重み変更方法
 
+累積距離を計算するための再帰方程式において、斜め遷移の重みを変更する手順は以下の通りです。
+
 1. [`common.hpp`](https://github.com/nacky823/dp-matching-word-recognition/blob/cb6c0397860a4f31eb237090836015804eec90a5/core/common.hpp#L21C1-L21C17) の `21` 行目を編集
     + 重みの値を、任意の `double` 型の浮動小数点数に変更する
         ```c++
+        #define WEIGHT 2
         #define WEIGHT 2
         ```
         > **Note**
