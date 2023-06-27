@@ -133,7 +133,7 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 1. コンパイル & 実行
     + `core/` ディレクトリで以下のコマンドを実行
     ```
-    make && ./do
+    make clean && make && ./do
     ```
 
 ## License
