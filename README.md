@@ -78,8 +78,8 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 1. （任意）[`common.hpp`](https://github.com/nacky823/dp-matching-word-recognition/blob/21ca44049b26923f9da6329d8207242a2023943c/core/common.hpp#L18C1-L19C54) の `18`, `19` 行目を編集
     + マッチングに使用する、正解と認識対象のファイルセットをそれぞれ指定
         ```c++
-        #define CORRECT 11 // file number of the correct data
-        #define UNKNOWN 12 // file number of the unknown data
+        #define CORRECT 11 // File number of the correct data
+        #define UNKNOWN 12 // File number of the unknown data
         ```
         > **Note**
         > + 初期設定では正解ファイルセットが、`11` つまり [`city011`](https://github.com/nacky823/dp-matching-word-recognition/tree/master/city_mcepdata/city011) になっている。
@@ -118,16 +118,16 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 
 累積距離を計算するための再帰方程式において、斜め遷移の重みを変更する手順は以下の通りです。
 
-1. [`common.hpp`](https://github.com/nacky823/dp-matching-word-recognition/blob/cb6c0397860a4f31eb237090836015804eec90a5/core/common.hpp#L21C1-L21C17) を編集
+1. [`common.hpp`](https://github.com/nacky823/dp-matching-word-recognition/blob/cb6c0397860a4f31eb237090836015804eec90a5/core/common.hpp#L21C1-L21C17) の `21` 行目を編集
     + 重みの値を、任意の `double` 型の浮動小数点数に変更する
-        ```c
-        #define WEIGHT 2
+        ```c++
+        #define WEIGHT 2 // Weight for diagonal transitions
         ```
         > **Note**
         > + 初期設定では重みの値が `2` になっている。
         > + ex. $\sqrt{2}$ に変更する場合、以下の様に記述する。
-        >   ```c
-        >   #define WEIGHT 1.414213562373
+        >   ```c++
+        >   #define WEIGHT 1.414213562373 // Weight for diagonal transitions
         >   ```
 
 1. コンパイル & 実行
