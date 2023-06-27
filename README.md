@@ -114,7 +114,7 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
             + `Unknown file : city012_062.txt` は認識対象のファイル
             + `Word distance is 0.603361` は DP マッチングにおける単語間距離
 
-### 斜め遷移の重み変更方法
++ **斜め遷移の重み変更方法**
 
 累積距離を計算するための再帰方程式において、斜め遷移の重みを変更する手順は以下の通りです。
 
