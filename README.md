@@ -17,6 +17,11 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 
 ## 入力と出力
 
+> **Warning**  
+> + このパッケージでは、サンプルデータの提供を行わないため、予めサンプルデータを用意する必要があります。
+> + 入力するサンプルデータは、単語の音声に音響分析が施され、15次のメルケプストラム特徴量を抽出したデータを想定しています。
+> + サンプルデータに関する詳細な情報は、[以下](https://github.com/nacky823/dp-matching-word-recognition/tree/master#%E5%85%A5%E5%8A%9B)を参照してください。
+
 ### 入力
 + テキストファイル形式で **2 種類のファイルセット** を入力
 
@@ -30,25 +35,19 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 + 入力するテキストファイルの規則
 
     + 各ファイルには、**1 つの単語** を含める
-    + 各ファイルには、**単語に対応した番号** を割り振る
-    + 各ファイルには、正解データと未知データを区別する為の **番号** を割り振る
-    + ファイル名の例
+    + 各ファイル名には、`1` から `100` までの **単語に対応した番号** を重複せず記述する
+    + 各ファイル名には、正解データと未知データを区別する為の **番号** を割り振る
         ```
         sample[正解データと未知データを区別するための番号]_[単語に対応した番号].txt
         ```
-        ```
-        sample021_100.txt
-        ```
+        + ファイル名の例
+            ```
+            sample011_100.txt
+            ```
 
 + 入力するテキストファイルの記述規則
 
     + １行目：拡張子 `.txt` を除いた、自身の **ファイル名**
-
-        + ファイル名には、`1` から `100` までの **単語に対応した番号** を重複せず記述する
-        + ファイル名には、正解データと未知データを区別する為の **番号** を割り振る
-        + ex. `sample021_100.txt`
-            + `021` が正解データと未知データを区別する為の番号
-            + `100` が単語に対応した番号
 
     + ２行目：発音した **単語**
 
@@ -62,10 +61,10 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 
 + 入力するテキストファイルの記述例
 
-    + sample_data/sample021_100.txt
+    + `sample011_100.txt`
         ```
-        sample021_100
-        HAPPYOO
+        sample011_100
+        TANGO
         64
         0.859710 0.298871 -0.004965 ... -0.035384 
         0.995925 0.355393 0.187254 ... -0.002132 
@@ -79,11 +78,49 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 
 ## 使用方法
 
-1. 入力データの準備
-    + このパッケージのルートディレクトリに、入力データのファイルセットを追加
-    + 入力データの追加例
+### 入力データの準備
+
++ このパッケージでは、サンプルデータの提供を行わないため、予めサンプルデータを用意する必要があります。
+
+1. このパッケージのルートディレクトリに移動
+    + `git clone` を行ったディレクトリのパスが `/path/to/cloned_ws/` の場合、以下のコマンドを実行
+        ```
+        cd /path/to/cloned_ws/dp-matching-word-recognition/
         ```
 
+1. サンプルデータのファイルを配置するための、階層構造を作成
+    ```
+    mkdir -p sample_data/{sample011,sample012,sample021,sample022}
+    ```
+    + 以下のような階層構造が作成される
+        ```
+        .
+        ├── core
+        └── sample_data
+            ├── sample011
+            ├── sample012
+            ├── sample021
+            └── sample022
+        
+        6 directories
+        ```
+
+1. 上記で作成した、`sample011` のような末端ディレクトリにそれぞれ、サンプルデータを配置する
+    ```
+    mv /path/to/sample_data_directory_1/* ./sample_data/sample011/
+    mv /path/to/sample_data_directory_2/* ./sample_data/sample012/
+    mv /path/to/sample_data_directory_3/* ./sample_data/sample021/
+    mv /path/to/sample_data_directory_4/* ./sample_data/sample022/
+    ```
+    + 各末端ディレクトリ（ex. `sample011/`）には、複数のテキストファイルが含まれている必要がある
+    + 各末端ディレクトリのテキストファイルの数は、 `common.hpp` の `20` 行目で一様に指定されている
+        + テキストファイルの数を指定したい場合は、[以下のコード](https://github.com/nacky823/dp-matching-word-recognition/blob/bc8401fdeccceb54b851bb6e38a578098b4a015c/core/common.hpp#L20C1-L20C25) の `100` を指定したい数に編集する
+            ```c++
+            #define NUM_OF_FILES 100
+            ```
+    + これらのテキストファイルは、サンプルデータとして使用される
+
+### 実行方法
 
 1. （任意）[`common.hpp`](https://github.com/nacky823/dp-matching-word-recognition/blob/21ca44049b26923f9da6329d8207242a2023943c/core/common.hpp#L18C1-L19C54) の `18`, `19` 行目を編集
     + マッチングに使用する、正解と認識対象のファイルセットをそれぞれ指定
