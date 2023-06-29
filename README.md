@@ -153,7 +153,7 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
         Word distance is 0.603361
         
         
-        The accuracy rate is 99% [%].
+        The accuracy rate is 99 [%].
         ```
         + 不一致の単語がある場合、詳細情報を出力する
             + `Correct file : sample011_020.txt` は正解のファイル
