@@ -13,8 +13,8 @@
 #define WORD_SIZE 20
 #define ROW_SIZE 255
 #define COLUMN_SIZE 15
-#define FILE_NAME_FORMAT "city%03d_%03d.txt"
-#define PATH_FORMAT "../city_mcepdata/city%03d/" FILE_NAME_FORMAT
+#define FILE_NAME_FORMAT "sample%03d_%03d.txt"
+#define PATH_FORMAT "../sample_data/sample%03d/" FILE_NAME_FORMAT
 #define CORRECT 11 // file number of the correct data
 #define UNKNOWN 12 // file number of the unknown data
 #define NUM_OF_FILES 100
