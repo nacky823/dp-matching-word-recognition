@@ -34,10 +34,10 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
     + 各ファイルには、正解データと未知データを区別する為の **番号** を割り振る
     + ファイル名の例
         ```
-        city[正解データと未知データを区別するための番号]_[単語に対応した番号].txt
+        sample[正解データと未知データを区別するための番号]_[単語に対応した番号].txt
         ```
         ```
-        city021_100.txt
+        sample021_100.txt
         ```
 
 + 入力するテキストファイルの記述規則
@@ -46,7 +46,7 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 
         + ファイル名には、`1` から `100` までの **単語に対応した番号** を重複せず記述する
         + ファイル名には、正解データと未知データを区別する為の **番号** を割り振る
-        + ex. `city021_100.txt`
+        + ex. `sample021_100.txt`
             + `021` が正解データと未知データを区別する為の番号
             + `100` が単語に対応した番号
 
@@ -62,9 +62,9 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 
 + 入力するテキストファイルの記述例
 
-    + city_mcepdata/city021_100.txt
+    + sample_data/sample021_100.txt
         ```
-        city021_100
+        sample021_100
         HAPPYOO
         64
         0.859710 0.298871 -0.004965 ... -0.035384 
@@ -79,6 +79,12 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
 
 ## 使用方法
 
+1. 入力データの準備
+    + このパッケージのルートディレクトリに、入力データのファイルセットを追加
+    + 入力データの追加例
+        ```
+
+
 1. （任意）[`common.hpp`](https://github.com/nacky823/dp-matching-word-recognition/blob/21ca44049b26923f9da6329d8207242a2023943c/core/common.hpp#L18C1-L19C54) の `18`, `19` 行目を編集
     + マッチングに使用する、正解と認識対象のファイルセットをそれぞれ指定
         ```c++
@@ -86,10 +92,9 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
         #define UNKNOWN 12 // File number of the unknown data
         ```
         > **Note**
-        > + 初期設定では正解ファイルセットが、`11` つまり [`city011`](https://github.com/nacky823/dp-matching-word-recognition/tree/master/city_mcepdata/city011) になっている。
-        > + 初期設定では認識対象ファイルセットが、`12` つまり [`city012`](https://github.com/nacky823/dp-matching-word-recognition/tree/master/city_mcepdata/city012) になっている。
+        > + 初期設定では正解ファイルセットが、`11` つまり `sample011` になっている。
+        > + 初期設定では認識対象ファイルセットが、`12` つまり `sample012` になっている。
         > + 正解または認識対象ファイルセットを任意のものに指定
-        >   + `11`, `12`, `21`, `22` の中から選択して書き換える
 
 1. コンパイル
     1. このパッケージのディレクトリに移動
@@ -106,16 +111,16 @@ git clone https://github.com/nacky823/dp-matching-word-recognition.git
         ```
         
         !!! Did not match with the correct answer. !!!
-        Correct file : city011_020.txt
-        Unknown file : city012_062.txt
+        Correct file : sample011_020.txt
+        Unknown file : sample012_062.txt
         Word distance is 0.603361
         
         
         The accuracy rate is 99% [%].
         ```
         + 不一致の単語がある場合、詳細情報を出力する
-            + `Correct file : city011_020.txt` は正解のファイル
-            + `Unknown file : city012_062.txt` は認識対象のファイル
+            + `Correct file : sample011_020.txt` は正解のファイル
+            + `Unknown file : sample012_062.txt` は認識対象のファイル
             + `Word distance is 0.603361` は DP マッチングにおける単語間距離
 
 ### 斜め遷移の重み変更方法
